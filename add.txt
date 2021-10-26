@@ -1,0 +1,30 @@
+00000000000005fa <add>:
+ 5fa:	55                   	push   %rbp
+ 5fb:	48 89 e5             	mov    %rsp,%rbp
+ 5fe:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+ 602:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+ 606:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+ 60a:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+ 60e:	48 01 d0             	add    %rdx,%rax
+ 611:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+ 615:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 619:	5d                   	pop    %rbp
+ 61a:	c3                   	retq   
+
+000000000000061b <main>:
+ 61b:	55                   	push   %rbp
+ 61c:	48 89 e5             	mov    %rsp,%rbp
+ 61f:	48 83 ec 20          	sub    $0x20,%rsp
+ 623:	48 c7 45 e8 34 12 00 	movq   $0x1234,-0x18(%rbp)
+ 62a:	00 
+ 62b:	b8 00 00 cd ab       	mov    $0xabcd0000,%eax
+ 630:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+ 634:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+ 638:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 63c:	48 89 d6             	mov    %rdx,%rsi
+ 63f:	48 89 c7             	mov    %rax,%rdi
+ 642:	e8 b3 ff ff ff       	callq  5fa <add>
+ 647:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+ 64b:	b8 00 00 00 00       	mov    $0x0,%eax
+ 650:	c9                   	leaveq 
+ 651:	c3                   	retq 
